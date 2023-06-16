@@ -6,7 +6,7 @@
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:54:24 by alcaball          #+#    #+#             */
-/*   Updated: 2023/05/30 17:10:09 by alcaball         ###   ########.fr       */
+/*   Updated: 2023/06/16 13:43:38 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	s3 = malloc (ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (s3 == NULL)
-		return (s3);
+	s3 = malloc (sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s3)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (s1[i] != '\0')
