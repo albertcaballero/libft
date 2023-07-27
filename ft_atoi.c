@@ -6,7 +6,7 @@
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:16:37 by alcaball          #+#    #+#             */
-/*   Updated: 2023/05/22 18:57:11 by alcaball         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:25:50 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	numb;
-	int	flag;
+	int		i;
+	long	numb;
+	int		flag;
 
 	i = 0;
 	numb = 0;
