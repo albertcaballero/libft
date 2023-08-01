@@ -1,7 +1,7 @@
 NAME = libft.a
 BNAME = .bonus
 LIBRARY = libft.h
-CFLAGS= -Wall -Wextra -Werror -MMD -I.
+CFLAGS= -Wall -Wextra -Werror -I.
 CC = cc
 
 SRC = ft_isalpha.c ft_memchr.c	ft_memset.c\
@@ -15,13 +15,11 @@ SRC = ft_isalpha.c ft_memchr.c	ft_memset.c\
 	ft_itoa.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_putendl_fd.c\
 	ft_putnbr_fd.c
 OBJS = $(SRC:.c=.o)
-DEPS = $(SRC:.c=.d)
 
 BONUSRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c\
 	ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 BONUSOBJS = $(BONUSRC:.c=.o)
-BONUSDEPS = $(BONUSRC:.c=.d)
 
 
 %.o: %.c $(LIBRARY) Makefile
@@ -38,7 +36,7 @@ $(BNAME): $(BONUSOBJS) $(OBJS)
 	touch $@
 
 clean:
-	rm -f $(OBJS) $(DEPS) $(BONUSOBJS) $(BONUSDEPS)
+	rm -f $(OBJS) $(BONUSOBJS)
 
 fclean: clean
 	rm -f $(NAME) $(BNAME)
@@ -46,6 +44,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re bonus
-
--include $(DEPS)
--include $(BONUSDEPS)

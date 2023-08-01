@@ -6,7 +6,7 @@
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 12:12:37 by alcaball          #+#    #+#             */
-/*   Updated: 2023/05/30 17:09:02 by alcaball         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:55:01 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int			ft_tolower(int c);
 int			ft_toupper(int c);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 int			ft_atoi(const char *str);
+long		ft_atol(const char *str);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
