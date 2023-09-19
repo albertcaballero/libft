@@ -6,7 +6,7 @@
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:54:24 by alcaball          #+#    #+#             */
-/*   Updated: 2023/06/16 13:43:38 by alcaball         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:37:25 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	s3[i] = '\0';
+	free(s1);
+	free(s2);
 	return (s3);
 }
 /*/
