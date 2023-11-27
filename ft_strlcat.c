@@ -6,7 +6,7 @@
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:10:08 by alcaball          #+#    #+#             */
-/*   Updated: 2023/11/27 10:23:28 by alcaball         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:42:08 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ size_t	minlen(char *dst, size_t dstsize)
 		i++;
 	return (i);
 }
+
 //hell, do not use
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
