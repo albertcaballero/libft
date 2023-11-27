@@ -6,7 +6,7 @@
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:54:24 by alcaball          #+#    #+#             */
-/*   Updated: 2023/09/19 13:37:25 by alcaball         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:22:56 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,19 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (s1[i] != '\0')
+	while (s1 && s1[i] != 0)
 	{
 		s3[i] = s1[i];
 		i++;
 	}
-	while (s2[j] != '\0')
+	while (s2 && s2[j] != 0)
 	{
 		s3[i] = s2[j];
 		i++;
 		j++;
 	}
-	s3[i] = '\0';
+	s3[i] = 0;
 	free(s1);
 	free(s2);
 	return (s3);
 }
-/*/
-int	main(void)
-{
-	char	s1[] = "abc";
-	char	s2[] = "def";
-	printf("%s", ft_strjoin(s1, s2));
-	return (0);
-}//*/

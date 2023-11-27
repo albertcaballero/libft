@@ -6,7 +6,7 @@
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:46:52 by alcaball          #+#    #+#             */
-/*   Updated: 2023/05/25 17:25:48 by alcaball         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:18:38 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,20 +101,3 @@ char	**ft_split(char const *s, char c)
 	spl[m] = NULL;
 	return (spl);
 }
-
-/*
-int	main(void)
-{
-	char	*s = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
-	char	c = ' ';
-	char	**m;
-	int		i = 0;
-
-	m = ft_split(s, c);
-	while (m[i] != NULL)
-	{
-		printf("%s\n", m[i]);
-		i++;
-	}
-	return (0);
-}//*/
