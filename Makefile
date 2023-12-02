@@ -19,13 +19,15 @@ OBJS = $(SRC:.c=.o)
 BONUSRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c\
 	ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
-GNLSRC = get_next_line.c get_next_line_utils.c get_next_line.h
-
 BONUSOBJS = $(BONUSRC:.c=.o)
+
+GNLSRC = gnl/get_next_line.c gnl/get_next_line_utils.c gnl/get_next_line.h
+
+BONUSOBJS = $(GNLSRC:.c=.o)
 
 
 %.o: %.c $(LIBRARY) Makefile
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(GNLSRC) -c $< -o $@
 
 all: $(NAME)
 
@@ -35,8 +37,9 @@ $(NAME): $(OBJS) $(LIBRARY)
 
 bonus: $(BNAME)
 $(BNAME): $(BONUSOBJS) $(OBJS)
-	ar -crs $(NAME) $(BONUSOBJS) $(OBJS)
-	touch $@
+	$(MAKE) -C ./ft_printf
+	ar -crs $(NAME) $(BONUSOBJS) $(OBJS) $(GNLSRC)
+	touch $(BNAME)
 
 clean:
 	rm -f $(OBJS) $(BONUSOBJS)

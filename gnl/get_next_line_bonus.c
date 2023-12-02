@@ -6,7 +6,7 @@
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:30:42 by alcaball          #+#    #+#             */
-/*   Updated: 2023/07/12 13:45:48 by alcaball         ###   ########.fr       */
+/*   Updated: 2023/12/02 11:32:44 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	*get_next_line(int fd)
 
 	i = 0;
 	mega = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= OPEN_MAX)
 		return (NULL);
 	cola[fd] = reader(fd, cola[fd]);
 	if (cola[fd] == NULL)

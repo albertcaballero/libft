@@ -6,7 +6,7 @@
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:52:58 by alcaball          #+#    #+#             */
-/*   Updated: 2023/11/27 11:34:18 by alcaball         ###   ########.fr       */
+/*   Updated: 2023/12/02 11:30:29 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	int_putnbr_fd(int n, int fd)
 			return (-1);
 	if (nb > 9)
 	{
-		aux = ft_putnbr_fd (nb / 10, fd);
+		aux = int_putnbr_fd (nb / 10, fd);
 		nb = nb % 10;
 		if (aux == -1)
 			return (-1);
