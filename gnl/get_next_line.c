@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 12:51:16 by alcaball          #+#    #+#             */
-/*   Updated: 2023/11/27 12:01:36 by alcaball         ###   ########.fr       */
+/*   Created: 2023/07/12 13:30:42 by alcaball          #+#    #+#             */
+/*   Updated: 2023/12/02 11:32:44 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,24 +103,46 @@ static char	*reader(int fd, char *cola)
 
 char	*get_next_line(int fd)
 {
-	int			i;
 	char		*mega;
-	static char	*cola;
+	static char	*cola[FOPEN_MAX];
 
-	i = 0;
 	mega = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= FOPEN_MAX)
 		return (NULL);
-	cola = reader(fd, cola);
-	if (cola == NULL)
+	cola[fd] = reader(fd, cola[fd]);
+	if (cola[fd] == NULL)
 		return (NULL);
-	mega = getliner(cola);
+	mega = getliner(cola[fd]);
 	if (mega == NULL)
 	{
-		free(cola);
-		cola = NULL;
+		free(cola[fd]);
+		cola[fd] = NULL;
 	}
 	else
-		cola = colador(cola, ft_strlen(mega));
+		cola[fd] = colador(cola[fd], ft_strlen(mega));
 	return (mega);
 }
+
+/*
+int	main(void)
+{
+	int		fd;
+	int		fd2;
+	int		m;
+	char	*line;
+
+//	printf("*************\nBUFFER_SIZE = %i\n*************", BUFFER_SIZE);
+	m = 0;
+	fd = open("test.txt", O_RDONLY);
+	fd2 = open("test2.txt", O_RDONLY);
+	while (m < 15)
+	{
+		line = get_next_line(fd);
+		printf("\n%i: %s", m, line);
+		free(line);
+		m++;
+	}
+	close (fd);
+	return (0);
+}
+//*/

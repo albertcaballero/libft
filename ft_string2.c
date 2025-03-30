@@ -1,18 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 11:10:08 by alcaball          #+#    #+#             */
-/*   Updated: 2023/11/27 10:42:08 by alcaball         ###   ########.fr       */
+/*   Created: 2023/05/23 11:40:50 by alcaball          #+#    #+#             */
+/*   Updated: 2023/05/23 16:45:17 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	minlen(char *dst, size_t dstsize)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	unsigned int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	unsigned int	i;
+	char			*newstr;
+
+	newstr = malloc ((ft_strlen(s) + 1) * sizeof(char));
+	if (!newstr)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		newstr[i] = f(i, s[i]);
+		i++;
+	}
+	newstr[i] = 0;
+	return (newstr);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+	char	*pdst;
+	char	*psrc;
+
+	i = 0;
+	pdst = (char *) dst;
+	psrc = (char *) src;
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	dstsize--;
+	while (i < dstsize && psrc[i] != '\0')
+	{
+		pdst[i] = psrc[i];
+		i++;
+	}
+	pdst[i] = '\0';
+	return (ft_strlen(src));
+}
+
+
+// ==========
+
+static size_t	minlen(char *dst, size_t dstsize)
 {
 	size_t	i;
 

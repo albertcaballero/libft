@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:06:20 by alcaball          #+#    #+#             */
-/*   Updated: 2023/05/30 16:48:16 by alcaball         ###   ########.fr       */
+/*   Created: 2023/05/27 17:02:26 by alcaball          #+#    #+#             */
+/*   Updated: 2023/05/30 13:01:13 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*temp;
+
+	while (ft_lstsize(*lst) > 0)
+	{
+		temp = *lst;
+		del((*lst)->content);
+		*lst = temp->next;
+		free (temp);
+	}
+}
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -39,4 +52,17 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (nlist);
 }
 
-//CORREGIR EL MAKEFILE CON EL BONUS y los archivos se deben llamar *_bonus.c
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	del(lst->content);
+	free (lst);
+}

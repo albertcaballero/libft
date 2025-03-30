@@ -26,7 +26,6 @@ int		ft_printf(const char *str, ...);
 int		int_putnbr_fd(int n, int fd);
 int		int_putchar_fd(char c, int fd);
 int		int_putstr_fd(char *s, int fd);
-size_t	ft_strlen(const char *str);
 int		porc(char id, va_list varg);
 int		ft_isneg(long n, int flag);
 int		ft_puthex(int num, int cse);

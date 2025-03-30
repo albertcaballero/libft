@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 11:40:50 by alcaball          #+#    #+#             */
-/*   Updated: 2023/05/23 16:45:17 by alcaball         ###   ########.fr       */
+/*   Created: 2023/05/02 17:07:20 by alcaball          #+#    #+#             */
+/*   Updated: 2023/05/25 15:39:29 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_tolower(int c)
 {
-	unsigned int		i;
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
+}
 
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
+int	ft_toupper(int c)
+{
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }

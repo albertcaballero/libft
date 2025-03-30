@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 16:14:51 by alcaball          #+#    #+#             */
-/*   Updated: 2023/11/27 12:00:53 by alcaball         ###   ########.fr       */
+/*   Created: 2023/07/12 13:30:53 by alcaball          #+#    #+#             */
+/*   Updated: 2023/07/12 13:37:51 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@ char	*freeall(char *s1, char *s2)
 	if (s2)
 		free(s2);
 	return (NULL);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (str == NULL)
+		return (0);
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
 
 char	*ft_substr_gnl(char *s, unsigned int start, size_t len)

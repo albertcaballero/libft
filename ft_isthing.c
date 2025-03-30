@@ -1,25 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcaball <alcaball@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 15:25:40 by alcaball          #+#    #+#             */
-/*   Updated: 2023/11/27 10:23:36 by alcaball         ###   ########.fr       */
+/*   Created: 2023/05/02 16:23:28 by alcaball          #+#    #+#             */
+/*   Updated: 2023/11/27 10:10:30 by alcaball         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_isalnum(int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (!str || str == NULL)
+	if ((c < 48) || (c > 57 && c < 65) || (c > 90 && c < 97) || (c > 122))
 		return (0);
-	while (str[i] != 0)
-		i++;
-	return (i);
+	return (1);
+}
+
+int	ft_isprint(int c)
+{
+	if (c < 32 || c >= 127)
+		return (0);
+	return (1);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c < 48 || c > 57)
+		return (0);
+	return (1);
+}
+
+int	ft_isascii(int c)
+{
+	if (c < 0 || c > 127)
+		return (0);
+	return (1);
+}
+
+int	ft_isalpha(int c)
+{
+	if (c < 65 || (c > 90 && c < 97) || c > 122)
+		return (0);
+	return (1);
 }
