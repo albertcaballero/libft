@@ -23,13 +23,14 @@
 # define MINUS 2
 
 int		ft_printf(const char *str, ...);
+int		ft_dprintf(int fd, const char *str, ...);
+int		porc(int fd, char id, va_list varg);
+int		ft_isneg(long n, int flag);
 int		int_putnbr_fd(int n, int fd);
 int		int_putchar_fd(char c, int fd);
 int		int_putstr_fd(char *s, int fd);
-int		porc(char id, va_list varg);
-int		ft_isneg(long n, int flag);
-int		ft_puthex(int num, int cse);
-int		ft_put_add(size_t ad);
-int		ft_putuns(unsigned int n);
+int		ft_puthex(int num, int cse, int fd);
+int		ft_put_add(size_t ad, int fd);
+int		ft_putuns(unsigned int n, int fd);
 
 #endif

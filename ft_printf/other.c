@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_putuns(unsigned int n)
+int	ft_putuns(unsigned int n, int fd)
 {
 	long	nb;
 	int		neg;
@@ -25,17 +25,17 @@ int	ft_putuns(unsigned int n)
 		nb *= -1;
 	ret = ft_isneg(nb, 2);
 	if (neg == 1)
-		if (int_putchar_fd('-', 1) == -1)
+		if (int_putchar_fd('-', fd) == -1)
 			return (-1);
 	if (nb > 9)
 	{
-		aux = ft_putuns (nb / 10);
+		aux = ft_putuns (nb / 10, fd);
 		nb = nb % 10;
 		if (aux == -1)
 			return (-1);
 	}
 	if (nb <= 9)
-		if (int_putchar_fd(nb + '0', 1) == -1)
+		if (int_putchar_fd(nb + '0', fd) == -1)
 			return (-1);
 	return (ret + neg);
 }

@@ -27,7 +27,7 @@ int	ft_hexlen(size_t num)
 	return (len);
 }
 
-int	ft_puthex(int num, int cse)
+int	ft_puthex(int num, int cse, int fd)
 {
 	int				ret;
 	unsigned int	unum;
@@ -37,26 +37,26 @@ int	ft_puthex(int num, int cse)
 	ret = ft_hexlen(unum);
 	if (unum >= 16)
 	{
-		aux = ft_puthex (unum / 16, cse);
+		aux = ft_puthex (unum / 16, cse, fd);
 		if (aux == -1)
 			return (-1);
 		unum = unum % 16;
 	}
 	if (unum <= 9)
 	{
-		if (int_putchar_fd (unum + 48, 1) == -1)
+		if (int_putchar_fd(unum + 48, fd) == -1)
 			return (-1);
 	}
 	else if (unum > 9 && unum < 16 && cse == MAYUS)
-		aux = int_putchar_fd (unum + 55, 1);
+		aux = int_putchar_fd (unum + 55, fd);
 	else if (unum > 9 && unum < 16 && cse == MINUS)
-		aux = int_putchar_fd (unum + 87, 1);
+		aux = int_putchar_fd (unum + 87, fd);
 	if (aux == -1)
 		return (-1);
 	return (ret);
 }
 
-int	ft_puthexadd(size_t num, int cse)
+int	ft_puthexadd(size_t num, int cse, int fd)
 {
 	int	ret;
 	int	aux;
@@ -65,31 +65,31 @@ int	ft_puthexadd(size_t num, int cse)
 	aux = 0;
 	if (num >= 16)
 	{
-		ft_puthexadd (num / 16, cse);
-		ft_puthexadd (num % 16, cse);
+		ft_puthexadd(num / 16, cse, fd);
+		ft_puthexadd(num % 16, cse, fd);
 	}
 	if (num <= 9)
 	{
-		aux = int_putchar_fd (num + 48, 1);
+		aux = int_putchar_fd (num + 48, fd);
 		if (aux == -1)
 			return (-1);
 	}
 	else if (num > 9 && num < 16 && cse == MAYUS)
-		aux = int_putchar_fd (num + 55, 1);
+		aux = int_putchar_fd (num + 55, fd);
 	else if (num > 9 && num < 16 && cse == MINUS)
-		aux = int_putchar_fd (num + 87, 1);
+		aux = int_putchar_fd (num + 87, fd);
 	if (aux == -1)
 		return (-1);
 	return (ret);
 }
 
-int	ft_put_add(size_t ad)
+int	ft_put_add(size_t ad, int fd)
 {
 	int	ret;
 
-	if (int_putstr_fd("0x", 1) == -1)
+	if (int_putstr_fd("0x", fd) == -1)
 		return (-1);
-	ret = ft_puthexadd(ad, MINUS);
+	ret = ft_puthexadd(ad, MINUS, fd);
 	if (ret == -1)
 		return (-1);
 	return (ret + 2);
