@@ -14,35 +14,25 @@
 
 int	ft_isalnum(int c)
 {
-	if ((c < 48) || (c > 57 && c < 65) || (c > 90 && c < 97) || (c > 122))
-		return (0);
-	return (1);
+	return ft_isalpha(c) || ft_isdigit(c);
 }
 
 int	ft_isprint(int c)
 {
-	if (c < 32 || c >= 127)
-		return (0);
-	return (1);
+	return c >= 32 && c < 127;
 }
 
 int	ft_isdigit(int c)
 {
-	if (c < 48 || c > 57)
-		return (0);
-	return (1);
+	return c >= 48 && c <= 57;
 }
 
 int	ft_isascii(int c)
 {
-	if (c < 0 || c > 127)
-		return (0);
-	return (1);
+	return c >= 0 && c <= 127;
 }
 
 int	ft_isalpha(int c)
 {
-	if (c < 65 || (c > 90 && c < 97) || c > 122)
-		return (0);
-	return (1);
+	return (c >= 65 && c <= 90) || (c >= 97 && c <= 122);
 }

@@ -20,7 +20,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	while (s[i])
 	{
 		f(i, &s[i]);
-		i++;
+		++i;
 	}
 }
 
@@ -36,7 +36,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	while (s[i])
 	{
 		newstr[i] = f(i, s[i]);
-		i++;
+		++i;
 	}
 	newstr[i] = 0;
 	return (newstr);
@@ -72,7 +72,7 @@ static size_t	minlen(char *dst, size_t dstsize)
 
 	i = 0;
 	while (dst[i] != '\0' && i < dstsize)
-		i++;
+		++i;
 	return (i);
 }
 
