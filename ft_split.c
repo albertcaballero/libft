@@ -63,7 +63,7 @@ static char	*rmchar(char *s, char c, int a)
 	return (&s[j]);
 }
 
-void	*freefall(char **spl)
+void	*free_array(char **spl)
 {
 	int	i;
 
@@ -89,13 +89,13 @@ char	**ft_split(char const *s, char c)
 	if (!spl)
 		return (NULL);
 	if (s[0] == c)
-		s = rmchar ((char *) s, c, 1);
+		s = rmchar((char *) s, c, 1);
 	while (m < count)
 	{
-		spl[m] = ft_substr (s, 0, cntlen(s, c));
-		if (!spl)
-			return (freefall(spl));
-		s = rmchar ((char *) s, c, 2);
+		spl[m] = ft_substr(s, 0, cntlen(s, c));
+		if (!spl[m])
+			return (free_array(spl));
+		s = rmchar((char *) s, c, 2);
 		m++;
 	}
 	spl[m] = NULL;
