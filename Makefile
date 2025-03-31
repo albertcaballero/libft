@@ -8,13 +8,14 @@ SRC = ft_isthing.c ft_mem.c	ft_string.c	ft_case.c ft_atoi.c ft_calloc.c ft_put.c
 	ft_strmalloc.c ft_string2.c	ft_itoa.c ft_split.c
 BONUSRC = ft_lstbasics.c ft_lstextra.c 
 GNLSRC = gnl/get_next_line.c gnl/get_next_line_utils.c
+PRINTFFILE = impresora.c utils.c hex.c other.c
+PRINTFSRC = $(addprefix ft_printf/,$(PRINTFFILE))
 
 SRC += $(GNLSRC)
 SRC += $(BONUSRC)
+SRC += $(PRINTFSRC)
 
 OBJS = $(SRC:.c=.o)
-# BONUSOBJS = $(BONUSRC:.c=.o)
-# BONUSOBJS = $(GNLSRC:.c=.o)
 
 
 %.o: %.c $(LIBRARY) Makefile
@@ -23,14 +24,7 @@ OBJS = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBRARY)
-	$(MAKE) -C ./ft_printf
 	ar -crs $(NAME) $(OBJS)
-
-# bonus: $(BNAME)
-# $(BNAME): $(BONUSOBJS) $(OBJS)
-# 	$(MAKE) -C ./ft_printf
-# 	ar -crs $(NAME) $(BONUSOBJS) $(OBJS) $(GNLSRC)
-# 	touch $(BNAME)
 
 clean:
 	rm -f $(OBJS)

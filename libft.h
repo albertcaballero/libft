@@ -19,6 +19,8 @@
 # include <strings.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "gnl/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int			ft_isalnum(int c);

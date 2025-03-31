@@ -21,18 +21,6 @@ char	*freeall(char *s1, char *s2)
 	return (NULL);
 }
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	if (str == NULL)
-		return (0);
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
 char	*ft_substr_gnl(char *s, unsigned int start, size_t len)
 {
 	size_t	stt;

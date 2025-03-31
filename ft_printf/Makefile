@@ -10,6 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
+
+
+
+############## DEPRECATED, IS NOT USED
 NAME = libftprintf.a
 LIB = ft_printf.h
 CC = cc
@@ -31,8 +35,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-norm:
-	norminette -R CheckForbbiddenSourceHeader
 
 .PHONY: all clean fclean re
