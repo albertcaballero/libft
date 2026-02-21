@@ -63,7 +63,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (ft_strlen(src));
 }
 
-
 // ==========
 
 static size_t	minlen(char *dst, size_t dstsize)
@@ -98,4 +97,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		dst[i] = '\0';
 	return (aux + ft_strlen(src));
 }
-  
