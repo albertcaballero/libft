@@ -6,9 +6,9 @@ CC = cc
 
 SRC = ft_isthing.c ft_mem.c	ft_string.c	ft_case.c ft_atoi.c ft_calloc.c ft_put.c\
 	ft_strmalloc.c ft_string2.c	ft_itoa.c ft_split.c
-BONUSRC = ft_lstbasics.c ft_lstextra.c 
+BONUSRC = ft_lstbasics.c ft_lstextra.c
 GNLSRC = gnl/get_next_line.c gnl/get_next_line_utils.c
-PRINTFFILE = ft_printf.c utils.c hex.c other.c
+PRINTFFILE = ft_printf.c hex.c putbuffer.c
 PRINTFSRC = $(addprefix ft_printf/,$(PRINTFFILE))
 
 SRC += $(GNLSRC)

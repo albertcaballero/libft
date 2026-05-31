@@ -12,85 +12,41 @@
 
 #include "ft_printf.h"
 
-int	ft_hexlen(size_t num)
+void	ft_puthex(int num, int cse, t_pf_buf* buf)
 {
-	int	len;
-
-	len = 0;
-	if (num == 0)
-		return (1);
-	while (num > 0)
-	{
-		num /= 16;
-		len++;
-	}
-	return (len);
-}
-
-int	ft_puthex(int num, int cse, int fd)
-{
-	int				ret;
 	unsigned int	unum;
-	int				aux;
 
 	unum = (unsigned int) num;
-	ret = ft_hexlen(unum);
 	if (unum >= 16)
 	{
-		aux = ft_puthex (unum / 16, cse, fd);
-		if (aux == -1)
-			return (-1);
+		ft_puthex (unum / 16, cse, buf);
 		unum = unum % 16;
 	}
 	if (unum <= 9)
-	{
-		if (int_putchar_fd(unum + 48, fd) == -1)
-			return (-1);
-	}
-	else if (unum > 9 && unum < 16 && cse == MAYUS)
-		aux = int_putchar_fd (unum + 55, fd);
-	else if (unum > 9 && unum < 16 && cse == MINUS)
-		aux = int_putchar_fd (unum + 87, fd);
-	if (aux == -1)
-		return (-1);
-	return (ret);
+		buf_add_char(unum + 48, buf);
+	else if (unum > 9 && unum < 16 && cse == FT_PRINTF_UPPER)
+		buf_add_char (unum + 55, buf);
+	else if (unum > 9 && unum < 16 && cse == FT_PRINTF_LOWER)
+		buf_add_char (unum + 87, buf);
 }
 
-int	ft_puthexadd(size_t num, int cse, int fd)
+void	ft_puthexadd(size_t num, int cse, t_pf_buf* buf)
 {
-	int	ret;
-	int	aux;
-
-	ret = ft_hexlen(num);
-	aux = 0;
 	if (num >= 16)
 	{
-		ft_puthexadd(num / 16, cse, fd);
-		ft_puthexadd(num % 16, cse, fd);
+		ft_puthexadd(num / 16, cse, buf);
+		ft_puthexadd(num % 16, cse, buf);
 	}
 	if (num <= 9)
-	{
-		aux = int_putchar_fd (num + 48, fd);
-		if (aux == -1)
-			return (-1);
-	}
-	else if (num > 9 && num < 16 && cse == MAYUS)
-		aux = int_putchar_fd (num + 55, fd);
-	else if (num > 9 && num < 16 && cse == MINUS)
-		aux = int_putchar_fd (num + 87, fd);
-	if (aux == -1)
-		return (-1);
-	return (ret);
+		buf_add_char(num + 48, buf);
+	else if (num > 9 && num < 16 && cse == FT_PRINTF_UPPER)
+		buf_add_char (num + 55, buf);
+	else if (num > 9 && num < 16 && cse == FT_PRINTF_LOWER)
+		buf_add_char (num + 87, buf);
 }
 
-int	ft_put_add(size_t ad, int fd)
+void	ft_put_add(size_t ad, t_pf_buf* buf)
 {
-	int	ret;
-
-	if (int_putstr_fd("0x", fd) == -1)
-		return (-1);
-	ret = ft_puthexadd(ad, MINUS, fd);
-	if (ret == -1)
-		return (-1);
-	return (ret + 2);
+	buffer_putstr("0x", buf);
+	ft_puthexadd(ad, FT_PRINTF_LOWER, buf);
 }

@@ -19,18 +19,30 @@
 # include <stddef.h>
 # include "../libft.h"
 
-# define MAYUS 1
-# define MINUS 2
+# define FT_PRINTF_UPPER    1
+# define FT_PRINTF_LOWER    2
+# define FT_PRINTF_BUFSIZE  128
+
+typedef struct s_printf_buffer{
+    char buf[FT_PRINTF_BUFSIZE];
+    int idx;
+    int fd;
+    int bytes;
+} t_pf_buf;
+
 
 int		ft_printf(const char *str, ...);
 int		ft_dprintf(int fd, const char *str, ...);
-int		porc(int fd, char id, va_list varg);
-int		ft_isneg(long n, int flag);
-int		int_putnbr_fd(int n, int fd);
-int		int_putchar_fd(char c, int fd);
-int		int_putstr_fd(char *s, int fd);
-int		ft_puthex(int num, int cse, int fd);
-int		ft_put_add(size_t ad, int fd);
-int		ft_putuns(unsigned int n, int fd);
+void    buf_add_char(char c, t_pf_buf* buf);
+
+//put buffer
+void    buf_add_char(char c, t_pf_buf* buf);
+void    buffer_putstr(char *s, t_pf_buf* buf);
+void    buffer_putnbr(int n, t_pf_buf* buf);
+void    buffer_putuint(unsigned int n, t_pf_buf* buf);
+void	ft_puthex(int num, int cse, t_pf_buf* buf);
+void	ft_put_add(size_t ad, t_pf_buf* buf);
+
+
 
 #endif
